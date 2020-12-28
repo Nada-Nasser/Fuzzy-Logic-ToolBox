@@ -69,10 +69,10 @@ public class FuzzyVariable {
     {
         fuzzifiedValues = new HashMap<>();
 
-        for(int i = 0 ; i < fuzzySets.size() ; i++)
-        {
-            double fuzzifiedValue =   fuzzySets.get(i).getMembershipValue(crispValue);
-            fuzzifiedValues.put(fuzzySets.get(i).getName(),fuzzifiedValue);
+        for (FuzzySet fuzzySet : fuzzySets) {
+            double fuzzifiedValue = fuzzySet.getMembershipValue(crispValue);
+            //   System.out.println(fuzzySets.get(i).getName() + " " + fuzzifiedValue);
+            fuzzifiedValues.add(fuzzifiedValue);
         }
 
     }
@@ -81,8 +81,8 @@ public class FuzzyVariable {
     public double defuzzifyCrispValue()
     {
         ArrayList <Double> centroids = new ArrayList<>();
-        for(int i = 0 ; i < fuzzySets.size() ; i++){
-            centroids.add(fuzzySets.get(i).getCentroid());
+        for (FuzzySet fuzzySet : fuzzySets) {
+            centroids.add(fuzzySet.getCentroid());
         }
 
         double sumFuzzifiedValues = 0.0 , numer = 0.0;
@@ -97,4 +97,19 @@ public class FuzzyVariable {
         return crispValue;
     }
 
+    @Override
+    public String toString() {
+        return "FuzzyVariable\n{" + "\n"+
+                "  name = '" + name + '\'' + ", \n"+
+                "  fuzzySets = " + fuzzySets +", \n"+
+                "  crispValue = " + crispValue +", \n"+
+                "  fuzzifiedValues = " + fuzzifiedValues + "\n"+
+                '}';
+    }
+
+    /*
+    // TODO DELETE THIS FUNCTION AFTER APPLYING RULES
+    public void setFuzzifiedValues(ArrayList<Double> fuzzifiedValues) {
+        this.fuzzifiedValues = fuzzifiedValues;
+    }*/
 }
