@@ -58,6 +58,7 @@ public class FuzzyVariable {
 
     public void fuzzifyCrispValue()
     {
+        System.out.println("fuzzifiedValues");
         fuzzifiedValues = new ArrayList<>();
 
         for(int i = 0 ; i < fuzzySets.size() ; i++)
@@ -86,4 +87,13 @@ public class FuzzyVariable {
         return crispValue;
     }
 
+    @Override
+    public String toString() {
+        return "FuzzyVariable{" +
+                "name='" + name + '\'' +
+                ", fuzzySets=" + fuzzySets +
+                ", crispValue=" + crispValue +
+                ", fuzzifiedValues=" + fuzzifiedValues +
+                '}';
+    }
 }

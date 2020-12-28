@@ -12,6 +12,15 @@ abstract public class FuzzySet {
         this.range = range;
     }
 
+    @Override
+    public String toString() {
+        return "FuzzySet{" +
+                "name='" + name + '\'' +
+                ", centroid=" + centroid +
+                ", range=" + range +
+                '}';
+    }
+
     public abstract double getCentroid();
     public abstract double getMembershipValue(double crispValue);
 }
