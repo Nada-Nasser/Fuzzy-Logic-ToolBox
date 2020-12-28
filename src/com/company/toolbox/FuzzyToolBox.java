@@ -14,7 +14,7 @@ public class FuzzyToolBox
 
     int nVariables;
     HashMap<String,FuzzyVariable> inputFuzzyVariables;
-    HashMap<String,FuzzyVariable> outputFuzzyVariable;
+    HashMap<String,FuzzyVariable> outputFuzzyVariables;
 
     ArrayList<FuzzyRule> fuzzyRules;
 
@@ -23,7 +23,7 @@ public class FuzzyToolBox
         inputFuzzyVariables = new HashMap<>();
         fuzzyRules = new ArrayList<>();
 
-        outputFuzzyVariable = new HashMap<>();
+        outputFuzzyVariables = new HashMap<>();
     }
 
     public void addInputVariable(String name)
@@ -35,14 +35,20 @@ public class FuzzyToolBox
     public void addOutputVariable(String name)
     {
         FuzzyVariable fuzzyVariable = new FuzzyVariable(name);
-        outputFuzzyVariable.put(name , fuzzyVariable);
+        outputFuzzyVariables.put(name , fuzzyVariable);
     }
 
 
-    public FuzzyVariable getVariable(String name)
+    public FuzzyVariable getInputVariable(String name)
     {
         return inputFuzzyVariables.get(name);
     }
+
+    public FuzzyVariable getOutputVariable(String name)
+    {
+        return outputFuzzyVariables.get(name);
+    }
+
 
     public void addRule(String rule)
     {
@@ -57,13 +63,13 @@ public class FuzzyToolBox
         // 2- rules
         applyRules();
         // 3- defuzzification
-        /*
-        defuzzification();*/
+
+       // defuzzification();
     }
 
     private void defuzzification()
     {
-        for (Map.Entry<String,FuzzyVariable> entry : outputFuzzyVariable.entrySet())
+        for (Map.Entry<String,FuzzyVariable> entry : outputFuzzyVariables.entrySet())
         {
             entry.getValue().defuzzifyCrispValue();
         }

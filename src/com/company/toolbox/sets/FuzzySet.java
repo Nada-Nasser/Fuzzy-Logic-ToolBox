@@ -3,9 +3,9 @@ package com.company.toolbox.sets;
 import java.util.ArrayList;
 
 abstract public class FuzzySet {
-    private String name;
-    private double centroid;
-    private ArrayList<Double> range;
+    protected String name;
+    protected double centroid;
+    protected ArrayList<Double> range;
 
     public FuzzySet(String name, ArrayList<Double> range) {
         this.name = name;

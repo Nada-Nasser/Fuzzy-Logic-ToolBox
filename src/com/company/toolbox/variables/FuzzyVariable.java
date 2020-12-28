@@ -88,11 +88,17 @@ public class FuzzyVariable {
 
     @Override
     public String toString() {
-        return "FuzzyVariable{" +
-                "name='" + name + '\'' +
-                ", fuzzySets=" + fuzzySets +
-                ", crispValue=" + crispValue +
-                ", fuzzifiedValues=" + fuzzifiedValues +
+        return "FuzzyVariable\n{" + "\n"+
+                "  name = '" + name + '\'' + ", \n"+
+                "  fuzzySets = " + fuzzySets +", \n"+
+                "  crispValue = " + crispValue +", \n"+
+                "  fuzzifiedValues = " + fuzzifiedValues + "\n"+
                 '}';
     }
+
+    /*
+    // TODO DELETE THIS FUNCTION AFTER APPLYING RULES
+    public void setFuzzifiedValues(ArrayList<Double> fuzzifiedValues) {
+        this.fuzzifiedValues = fuzzifiedValues;
+    }*/
 }

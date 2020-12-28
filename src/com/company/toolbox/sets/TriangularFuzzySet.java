@@ -34,12 +34,13 @@ public class TriangularFuzzySet extends FuzzySet
             slop2 = 1.0 / (b-c);
             term2 = -1*(slop2)*(c);
         }
+
+        this.centroid = (a+b+c) / 3;
     }
 
     @Override
     public double getCentroid() {
-        // TODO FARAH
-        return 0;
+        return centroid;
     }
 
     @Override
