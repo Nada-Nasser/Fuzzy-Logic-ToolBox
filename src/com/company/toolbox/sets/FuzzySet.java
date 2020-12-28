@@ -12,6 +12,9 @@ abstract public class FuzzySet {
         this.range = range;
     }
 
+    public  String getName(){
+        return name;
+    }
     public abstract double getCentroid();
     public abstract double getMembershipValue(double crispValue);
 }

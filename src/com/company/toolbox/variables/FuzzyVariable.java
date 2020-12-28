@@ -6,6 +6,7 @@ import com.company.toolbox.sets.TrapezoidalFuzzySet;
 import com.company.toolbox.sets.TriangularFuzzySet;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FuzzyVariable {
 
@@ -13,7 +14,7 @@ public class FuzzyVariable {
     private ArrayList<FuzzySet> fuzzySets;
     private double crispValue;
 
-    private ArrayList<Double> fuzzifiedValues; // result from rules (output variables)
+    private HashMap<String,Double> fuzzifiedValues; // result from rules (output variables)
 
     public FuzzyVariable(String name) {
         this.name = name;
@@ -56,16 +57,26 @@ public class FuzzyVariable {
         this.crispValue = crispValue;
     }
 
+    public void setMembership(String set,Double fuzz){
+        this.fuzzifiedValues.put(set,fuzz);
+    }
+
+    public double getMembership(String s){
+        if(fuzzifiedValues.get(s)!= null) return fuzzifiedValues.get(s); else return -1;
+    }
+
     public void fuzzifyCrispValue()
     {
-        fuzzifiedValues = new ArrayList<>();
+        fuzzifiedValues = new HashMap<>();
 
         for(int i = 0 ; i < fuzzySets.size() ; i++)
         {
             double fuzzifiedValue =   fuzzySets.get(i).getMembershipValue(crispValue);
-            fuzzifiedValues.add(fuzzifiedValue);
+            fuzzifiedValues.put(fuzzySets.get(i).getName(),fuzzifiedValue);
         }
+
     }
+
 
     public double defuzzifyCrispValue()
     {
@@ -74,14 +85,14 @@ public class FuzzyVariable {
             centroids.add(fuzzySets.get(i).getCentroid());
         }
 
-        double sumFuzzifiedValues = 0.0 , den = 0.0;
+        double sumFuzzifiedValues = 0.0 , numer = 0.0;
         for(int i = 0 ; i < fuzzifiedValues.size() ; i++)
         {
             sumFuzzifiedValues+= fuzzifiedValues.get(i);
-            den += fuzzifiedValues.get(i)* centroids.get(i);
+            numer += fuzzifiedValues.get(i)* centroids.get(i);
         }
 
-        crispValue = den / sumFuzzifiedValues;
+        crispValue = numer / sumFuzzifiedValues;
 
         return crispValue;
     }

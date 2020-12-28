@@ -7,6 +7,7 @@ public class TrapezoidalFuzzySet extends FuzzySet{
         super(name, range);
     }
 
+
     @Override
     public double getCentroid() {
         // TODO FARAH

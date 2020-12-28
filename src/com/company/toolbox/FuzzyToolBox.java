@@ -13,7 +13,7 @@ public class FuzzyToolBox
     public final static int SET_TYPE_TRAP = 1;
 
     int nVariables;
-    HashMap<String,FuzzyVariable> inputFuzzyVariables;
+    HashMap<String,FuzzyVariable> inputFuzzyVariables;//gowwaha sets gowaha fuzzified values
     HashMap<String,FuzzyVariable> outputFuzzyVariable;
 
     ArrayList<FuzzyRule> fuzzyRules;
@@ -69,6 +69,7 @@ public class FuzzyToolBox
 
     private void applyRules() {
         // TODO FARAH
+        outputFuzzyVariable = FuzzyRule.getInference(fuzzyRules , inputFuzzyVariables);
         // calculate fuzzified values in outputFuzzyVariable
     }
 
