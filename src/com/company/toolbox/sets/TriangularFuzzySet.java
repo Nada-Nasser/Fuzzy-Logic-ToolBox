@@ -10,7 +10,7 @@ public class TriangularFuzzySet extends FuzzySet
     public TriangularFuzzySet(String name, ArrayList<Double> range) {
         super(name, range);
 
-        if (range.size()>3)
+        if (range.size() != 3)
             throw new IllegalArgumentException();
 
         a = range.get(0);

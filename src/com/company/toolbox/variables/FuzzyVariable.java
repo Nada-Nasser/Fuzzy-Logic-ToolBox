@@ -12,7 +12,6 @@ public class FuzzyVariable {
     private String name;
     private ArrayList<FuzzySet> fuzzySets;
     private double crispValue;
-
     private ArrayList<Double> fuzzifiedValues; // result from rules (output variables)
 
     public FuzzyVariable(String name) {
@@ -58,12 +57,12 @@ public class FuzzyVariable {
 
     public void fuzzifyCrispValue()
     {
-        System.out.println("fuzzifiedValues");
         fuzzifiedValues = new ArrayList<>();
 
         for(int i = 0 ; i < fuzzySets.size() ; i++)
         {
             double fuzzifiedValue =   fuzzySets.get(i).getMembershipValue(crispValue);
+         //   System.out.println(fuzzySets.get(i).getName() + " " + fuzzifiedValue);
             fuzzifiedValues.add(fuzzifiedValue);
         }
     }

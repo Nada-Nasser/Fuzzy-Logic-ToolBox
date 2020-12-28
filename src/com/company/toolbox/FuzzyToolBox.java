@@ -53,10 +53,11 @@ public class FuzzyToolBox
     {
         // 1- fuzzification
         fuzzification();
-        /*
+
         // 2- rules
         applyRules();
         // 3- defuzzification
+        /*
         defuzzification();*/
     }
 

@@ -21,6 +21,10 @@ abstract public class FuzzySet {
                 '}';
     }
 
+    public String getName() {
+        return name;
+    }
+
     public abstract double getCentroid();
     public abstract double getMembershipValue(double crispValue);
 }
