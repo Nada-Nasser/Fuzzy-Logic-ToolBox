@@ -7,6 +7,7 @@ import com.company.toolbox.sets.TriangularFuzzySet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FuzzyVariable {
 
@@ -14,7 +15,7 @@ public class FuzzyVariable {
     private ArrayList<FuzzySet> fuzzySets;
     private double crispValue;
 
-    private HashMap<String,Double> fuzzifiedValues; // result from rules (output variables)
+    private HashMap<String,Double> fuzzifiedValues = new HashMap<>(); // result from rules (output variables)
 
     public FuzzyVariable(String name) {
         this.name = name;
@@ -57,12 +58,12 @@ public class FuzzyVariable {
         this.crispValue = crispValue;
     }
 
-    public void setMembership(String set,Double fuzz){
+    public void setMembershipDegree(String set,Double fuzz){
         this.fuzzifiedValues.put(set,fuzz);
     }
 
-    public double getMembership(String s){
-        if(fuzzifiedValues.get(s)!= null) return fuzzifiedValues.get(s); else return -1;
+    public double getMembershipDegree(String setName){
+        if(fuzzifiedValues.get(setName)!= null) return fuzzifiedValues.get(setName); else return -1;
     }
 
     public void fuzzifyCrispValue()
@@ -72,7 +73,7 @@ public class FuzzyVariable {
         for (FuzzySet fuzzySet : fuzzySets) {
             double fuzzifiedValue = fuzzySet.getMembershipValue(crispValue);
             //   System.out.println(fuzzySets.get(i).getName() + " " + fuzzifiedValue);
-            fuzzifiedValues.add(fuzzifiedValue);
+            fuzzifiedValues.put(fuzzySet.getName(),fuzzifiedValue);
         }
 
     }
@@ -84,12 +85,22 @@ public class FuzzyVariable {
         for (FuzzySet fuzzySet : fuzzySets) {
             centroids.add(fuzzySet.getCentroid());
         }
-
+/*
         double sumFuzzifiedValues = 0.0 , numer = 0.0;
         for(int i = 0 ; i < fuzzifiedValues.size() ; i++)
         {
             sumFuzzifiedValues+= fuzzifiedValues.get(i);
             numer += fuzzifiedValues.get(i)* centroids.get(i);
+        }
+
+*/
+        double sumFuzzifiedValues = 0.0 , numer = 0.0 ;
+        int i = 0;
+        for (Map.Entry<String,Double> entry : fuzzifiedValues.entrySet())
+        {
+            double fuzzifiedValue = entry.getValue();
+            sumFuzzifiedValues+= fuzzifiedValue ;
+            numer += fuzzifiedValue * centroids.get(i++);
         }
 
         crispValue = numer / sumFuzzifiedValues;

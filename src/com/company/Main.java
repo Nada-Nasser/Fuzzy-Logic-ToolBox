@@ -19,7 +19,6 @@ public class Main {
         rangeSet1.add(30.0);
         toolBox.getInputVariable("var1").addFuzzySet("VL" , FuzzyToolBox.SET_TYPE_TRAP , rangeSet1);
 
-
         ArrayList<Double> rangeSet2 = new ArrayList<>();
         rangeSet2.add(10.0);
         rangeSet2.add(30.0);
@@ -41,7 +40,26 @@ public class Main {
         rangeSet4.add(100.0);
         toolBox.getInputVariable("var1").addFuzzySet("H" , FuzzyToolBox.SET_TYPE_TRAP , rangeSet4);
 
-        toolBox.getInputVariable("var1").setCrispValue(45);
+
+        toolBox.addInputVariable("var2");
+        ArrayList<Double> rangeSet5 = new ArrayList<>();
+        rangeSet5.add(0.0);
+        rangeSet5.add(15.0);
+        rangeSet5.add(30.0);
+        toolBox.getInputVariable("var2").addFuzzySet("B" , FuzzyToolBox.SET_TYPE_TRI , rangeSet5);
+
+        ArrayList<Double> rangeSet6 = new ArrayList<>();
+        rangeSet6.add(15.0);
+        rangeSet6.add(30.0);
+        rangeSet6.add(45.0);
+        toolBox.getInputVariable("var2").addFuzzySet("I" , FuzzyToolBox.SET_TYPE_TRI , rangeSet6);
+
+        ArrayList<Double> rangeSet7 = new ArrayList<>();
+        rangeSet7.add(30.0);
+        rangeSet7.add(60.0);
+        rangeSet7.add(60.0);
+        toolBox.getInputVariable("var2").addFuzzySet("E" , FuzzyToolBox.SET_TYPE_TRI , rangeSet7);
+
 
         toolBox.addOutputVariable("risk");
         //he set defined for the risk is high (0,25,50), normal (25,50,75),
@@ -64,15 +82,18 @@ public class Main {
         toolBox.getOutputVariable("risk").addFuzzySet("N" , FuzzyToolBox.SET_TYPE_TRI , rangerisk2);
         toolBox.getOutputVariable("risk").addFuzzySet("L" , FuzzyToolBox.SET_TYPE_TRI , rangerisk3);
 
-        /*
-        ArrayList<Double> deleteME = new ArrayList<>();
-        deleteME.add(0.0);
-        deleteME.add(0.5);
-        deleteME.add(0.5);
-        toolBox.getOutputVariable("risk").setFuzzifiedValues(deleteME);//TODO: DELETE THIS LINE*/
+        toolBox.addRule("var1 H or var2 E -> risk L");
+        toolBox.addRule("var1 M and var2 I or var2 B -> risk N");
+        toolBox.addRule("var1 VL -> risk H");
+        toolBox.addRule("var1 L and var2 B -> risk H");
+
+        toolBox.getInputVariable("var1").setCrispValue(50);
+        toolBox.getInputVariable("var2").setCrispValue(40);
+
 
         toolBox.run();
         System.out.println( toolBox.getInputVariable("var1").toString());
+        System.out.println( toolBox.getInputVariable("var2").toString());
         System.out.println( toolBox.getOutputVariable("risk").toString());
 
     }

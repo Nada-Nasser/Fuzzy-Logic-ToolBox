@@ -16,7 +16,7 @@ public class FuzzyToolBox
     HashMap<String,FuzzyVariable> inputFuzzyVariables;
     HashMap<String,FuzzyVariable> outputFuzzyVariables;
 
-    ArrayList<FuzzyRule> fuzzyRules;
+    ArrayList<String> fuzzyRules;
 
     public FuzzyToolBox(int nVariables) {
         this.nVariables = nVariables;
@@ -52,7 +52,7 @@ public class FuzzyToolBox
 
     public void addRule(String rule)
     {
-        fuzzyRules.add(new FuzzyRule(rule));
+        fuzzyRules.add(rule);
     }
 
     public void run()
@@ -64,7 +64,7 @@ public class FuzzyToolBox
         applyRules();
         // 3- defuzzification
 
-       // defuzzification();
+        defuzzification();
     }
 
     private void defuzzification()
@@ -77,7 +77,7 @@ public class FuzzyToolBox
 
     private void applyRules() {
         // TODO FARAH
-        outputFuzzyVariable = FuzzyRule.getInference(fuzzyRules , inputFuzzyVariables);
+        outputFuzzyVariables = FuzzyRule.getInference(fuzzyRules , inputFuzzyVariables , outputFuzzyVariables);
         // calculate fuzzified values in outputFuzzyVariable
     }
 
