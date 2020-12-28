@@ -59,10 +59,9 @@ public class FuzzyVariable {
     {
         fuzzifiedValues = new ArrayList<>();
 
-        for(int i = 0 ; i < fuzzySets.size() ; i++)
-        {
-            double fuzzifiedValue =   fuzzySets.get(i).getMembershipValue(crispValue);
-         //   System.out.println(fuzzySets.get(i).getName() + " " + fuzzifiedValue);
+        for (FuzzySet fuzzySet : fuzzySets) {
+            double fuzzifiedValue = fuzzySet.getMembershipValue(crispValue);
+            //   System.out.println(fuzzySets.get(i).getName() + " " + fuzzifiedValue);
             fuzzifiedValues.add(fuzzifiedValue);
         }
     }
@@ -70,8 +69,8 @@ public class FuzzyVariable {
     public double defuzzifyCrispValue()
     {
         ArrayList <Double> centroids = new ArrayList<>();
-        for(int i = 0 ; i < fuzzySets.size() ; i++){
-            centroids.add(fuzzySets.get(i).getCentroid());
+        for (FuzzySet fuzzySet : fuzzySets) {
+            centroids.add(fuzzySet.getCentroid());
         }
 
         double sumFuzzifiedValues = 0.0 , den = 0.0;
