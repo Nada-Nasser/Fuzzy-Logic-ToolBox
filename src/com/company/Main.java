@@ -46,22 +46,5 @@ public class Main {
 
         toolBox.run();
         System.out.println( toolBox.getVariable("var1").toString());
-
-        /*
-        Scanner in = new Scanner(System.in);
-        TeamFormationSupportSystem teamFormationSupportSystem;
-
-        int projectFund, experienceLevel;
-        System.out.print("Project Fund: ");
-        projectFund = in.nextInt();
-        System.out.print("Experience Level: ");
-        experienceLevel = in.nextInt();
-
-        teamFormationSupportSystem = new TeamFormationSupportSystem();
-        teamFormationSupportSystem.readInputs(projectFund, experienceLevel);
-        teamFormationSupportSystem.evaluateTeam();
-
-        System.out.println("Predicted Value (Risk) = " + teamFormationSupportSystem.getPredictedRiskValue());
-        System.out.println("Risk will be " + teamFormationSupportSystem.getPredictedRiskCategory());*/
     }
 }
