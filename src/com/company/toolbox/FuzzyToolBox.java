@@ -1,6 +1,6 @@
 package com.company.toolbox;
 
-import com.company.toolbox.sets.FuzzyRule;
+import com.company.toolbox.rules.FuzzyRule;
 import com.company.toolbox.variables.FuzzyVariable;
 
 import java.util.ArrayList;

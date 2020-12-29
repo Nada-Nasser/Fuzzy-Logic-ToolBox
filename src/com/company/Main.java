@@ -78,16 +78,16 @@ public class Main {
         rangerisk3.add(100.0);
         rangerisk3.add(100.0);
 
-        toolBox.getOutputVariable("risk").addFuzzySet("H" , FuzzyToolBox.SET_TYPE_TRI , rangerisk1);
-        toolBox.getOutputVariable("risk").addFuzzySet("N" , FuzzyToolBox.SET_TYPE_TRI , rangerisk2);
-        toolBox.getOutputVariable("risk").addFuzzySet("L" , FuzzyToolBox.SET_TYPE_TRI , rangerisk3);
+        toolBox.getOutputVariable("risk").addFuzzySet("High" , FuzzyToolBox.SET_TYPE_TRI , rangerisk1);
+        toolBox.getOutputVariable("risk").addFuzzySet("Normal" , FuzzyToolBox.SET_TYPE_TRI , rangerisk2);
+        toolBox.getOutputVariable("risk").addFuzzySet("Low" , FuzzyToolBox.SET_TYPE_TRI , rangerisk3);
 
-        toolBox.addRule("var1 H or var2 E -> risk L");
-        toolBox.addRule("var1 M and var2 I or var2 B -> risk N");
+        toolBox.addRule("var1 H or var2 E -> risk Low");
+        toolBox.addRule("var1 M and var2 I or var2 B -> risk Normal");
         toolBox.addRule("var1 VL -> risk H");
-        toolBox.addRule("var1 L and var2 B -> risk H");
+        toolBox.addRule("var1 L and var2 B -> risk High");
 
-        toolBox.getInputVariable("var1").setCrispValue(50);
+        toolBox.getInputVariable("var1").setCrispValue(10);
         toolBox.getInputVariable("var2").setCrispValue(40);
 
 

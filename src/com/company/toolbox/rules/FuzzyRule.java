@@ -1,4 +1,4 @@
-package com.company.toolbox.sets;
+package com.company.toolbox.rules;
 
 import com.company.toolbox.variables.FuzzyVariable;
 
