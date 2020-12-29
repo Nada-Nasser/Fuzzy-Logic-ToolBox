@@ -71,6 +71,8 @@ public class FuzzyToolBox
     {
         for (Map.Entry<String,FuzzyVariable> entry : outputFuzzyVariables.entrySet())
         {
+            System.out.println(entry.getValue().toString());
+
             entry.getValue().defuzzifyCrispValue();
         }
     }

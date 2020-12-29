@@ -81,26 +81,20 @@ public class FuzzyVariable {
 
     public double defuzzifyCrispValue()
     {
-        ArrayList <Double> centroids = new ArrayList<>();
+        //ArrayList <Double> centroids = new ArrayList<>();
+        HashMap<String,Double> centroids = new HashMap<>();
         for (FuzzySet fuzzySet : fuzzySets) {
-            centroids.add(fuzzySet.getCentroid());
-        }
-/*
-        double sumFuzzifiedValues = 0.0 , numer = 0.0;
-        for(int i = 0 ; i < fuzzifiedValues.size() ; i++)
-        {
-            sumFuzzifiedValues+= fuzzifiedValues.get(i);
-            numer += fuzzifiedValues.get(i)* centroids.get(i);
+            //centroids.add(fuzzySet.getCentroid());
+            centroids.put(fuzzySet.getName() , fuzzySet.getCentroid());
         }
 
-*/
         double sumFuzzifiedValues = 0.0 , numer = 0.0 ;
-        int i = 0;
+
         for (Map.Entry<String,Double> entry : fuzzifiedValues.entrySet())
         {
             double fuzzifiedValue = entry.getValue();
             sumFuzzifiedValues+= fuzzifiedValue ;
-            numer += fuzzifiedValue * centroids.get(i++);
+            numer += fuzzifiedValue * centroids.get(entry.getKey());
         }
 
         crispValue = numer / sumFuzzifiedValues;
@@ -117,10 +111,4 @@ public class FuzzyVariable {
                 "  fuzzifiedValues = " + fuzzifiedValues + "\n"+
                 '}';
     }
-
-    /*
-    // TODO DELETE THIS FUNCTION AFTER APPLYING RULES
-    public void setFuzzifiedValues(ArrayList<Double> fuzzifiedValues) {
-        this.fuzzifiedValues = fuzzifiedValues;
-    }*/
 }

@@ -1,8 +1,10 @@
 package com.company;
 
+import com.company.process.TeamFormationSupportSystem;
 import com.company.toolbox.FuzzyToolBox;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -84,7 +86,7 @@ public class Main {
 
         toolBox.addRule("var1 H or var2 E -> risk Low");
         toolBox.addRule("var1 M and var2 I or var2 B -> risk Normal");
-        toolBox.addRule("var1 VL -> risk H");
+        toolBox.addRule("var1 VL -> risk High");
         toolBox.addRule("var1 L and var2 B -> risk High");
 
         toolBox.getInputVariable("var1").setCrispValue(10);
@@ -96,5 +98,21 @@ public class Main {
         System.out.println( toolBox.getInputVariable("var2").toString());
         System.out.println( toolBox.getOutputVariable("risk").toString());
 
+        /*
+        Scanner in = new Scanner(System.in);
+        TeamFormationSupportSystem teamFormationSupportSystem;
+
+        int projectFund, experienceLevel;
+        System.out.print("Project Fund: ");
+        projectFund = in.nextInt();
+        System.out.print("Experience Level: ");
+        experienceLevel = in.nextInt();
+
+        teamFormationSupportSystem = new TeamFormationSupportSystem();
+        teamFormationSupportSystem.readInputs(projectFund, experienceLevel);
+        teamFormationSupportSystem.evaluateTeam();
+
+        System.out.println("Predicted Value (Risk) = " + teamFormationSupportSystem.getPredictedRiskValue());
+        System.out.println("Risk will be " + teamFormationSupportSystem.getPredictedRiskCategory());*/
     }
 }

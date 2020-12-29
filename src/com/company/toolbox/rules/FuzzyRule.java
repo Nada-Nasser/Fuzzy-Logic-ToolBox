@@ -40,12 +40,13 @@ public class FuzzyRule {
             if (FuzzyOut.getMembershipDegree(SetName) == -1.0) {
                 OutputFuzzyVariables.get(OutVariableName).setMembershipDegree(SetName, OutMembership);
             } else {
-                OutputFuzzyVariables.get(OutVariableName).setMembershipDegree(SetName, Math.min(FuzzyOut.getMembershipDegree(SetName), OutMembership));
+                OutputFuzzyVariables.get(OutVariableName).setMembershipDegree(SetName, Math.max(FuzzyOut.getMembershipDegree(SetName), OutMembership));
             }
 
         }
         return OutputFuzzyVariables;
     }
+
     private static double calculateMemberShip(double num1, double num2, String op) {
         if (op.equals("or")) {
             return Math.max(num1,num2);

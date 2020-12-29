@@ -25,6 +25,9 @@ public class TeamFormationSupportSystem
         rulesInference();
         //3- Defuzzification output
         defuzzification();
+
+        risk.defuzzify();
+        System.out.println(risk.toString());
     }
 
     public double getPredictedRiskValue()
@@ -62,5 +65,7 @@ public class TeamFormationSupportSystem
                 Math.min(projectFunding.getLow(), teamExperienceLevel.getBeginner()));
 
         risk = new Risk(riskLow,riskNormal,riskHigh);
+
+
     }
 }

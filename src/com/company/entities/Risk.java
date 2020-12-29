@@ -2,7 +2,7 @@ package com.company.entities;
 
 public class Risk {
 
-    private int crispValue;
+    private double crispValue;
     private double low;
     private double normal;
     private double high;
@@ -13,7 +13,17 @@ public class Risk {
         this.high = high;
     }
 
-    public int getCrispValue() {
+    @Override
+    public String toString() {
+        return "Risk{" +
+                "crispValue=" + crispValue +
+                ", low=" + low +
+                ", normal=" + normal +
+                ", high=" + high +
+                '}';
+    }
+
+    public double getCrispValue() {
         return crispValue;
     }
 
@@ -44,4 +54,10 @@ public class Risk {
     public void setHigh(double high) {
         this.high = high;
     }
+
+    public void defuzzify()
+    {
+        this.crispValue  = ((high*25)+(normal*50)+(low*83.3))/(low+high+normal);
+    }
+
 }
