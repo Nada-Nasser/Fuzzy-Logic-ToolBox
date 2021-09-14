@@ -63,28 +63,28 @@ public class Main {
          * Build the Second input variable
          * name = var2
          * Fuzzy Sets:
-         *  Low       (L) : [0,15,30]   => Triangular set
-         *  Medium    (M) : [15,30,45]  => Triangular set
-         *  High      (H) : [40,60,60]  => Triangular set
+         *  Low       (B) : [0,15,30]   => Triangular set
+         *  Medium    (I) : [15,30,45]  => Triangular set
+         *  High      (E) : [40,60,60]  => Triangular set
          */
         toolBox.addInputVariable("var2");
         ArrayList<Double> rangeSet5 = new ArrayList<>();
         rangeSet5.add(0.0);
         rangeSet5.add(15.0);
         rangeSet5.add(30.0);
-        toolBox.getInputVariable("var2").addFuzzySet("L" , FuzzyToolBox.SET_TYPE_TRI , rangeSet5);
+        toolBox.getInputVariable("var2").addFuzzySet("B" , FuzzyToolBox.SET_TYPE_TRI , rangeSet5);
 
         ArrayList<Double> rangeSet6 = new ArrayList<>();
         rangeSet6.add(15.0);
         rangeSet6.add(30.0);
         rangeSet6.add(45.0);
-        toolBox.getInputVariable("var2").addFuzzySet("M" , FuzzyToolBox.SET_TYPE_TRI , rangeSet6);
+        toolBox.getInputVariable("var2").addFuzzySet("I" , FuzzyToolBox.SET_TYPE_TRI , rangeSet6);
 
         ArrayList<Double> rangeSet7 = new ArrayList<>();
         rangeSet7.add(30.0);
         rangeSet7.add(60.0);
         rangeSet7.add(60.0);
-        toolBox.getInputVariable("var2").addFuzzySet("H" , FuzzyToolBox.SET_TYPE_TRI , rangeSet7);
+        toolBox.getInputVariable("var2").addFuzzySet("E" , FuzzyToolBox.SET_TYPE_TRI , rangeSet7);
 
 
         /**
