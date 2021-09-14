@@ -12,14 +12,12 @@ public class FuzzyToolBox
     public final static int SET_TYPE_TRI = 0;
     public final static int SET_TYPE_TRAP = 1;
 
-    int nVariables;
     HashMap<String,FuzzyVariable> inputFuzzyVariables;
     HashMap<String,FuzzyVariable> outputFuzzyVariables;
 
     ArrayList<String> fuzzyRules;
 
-    public FuzzyToolBox(int nVariables) {
-        this.nVariables = nVariables;
+    public FuzzyToolBox() {
         inputFuzzyVariables = new HashMap<>();
         fuzzyRules = new ArrayList<>();
 
@@ -62,8 +60,8 @@ public class FuzzyToolBox
 
         // 2- rules
         applyRules();
-        // 3- defuzzification
 
+        // 3- defuzzification
         defuzzification();
     }
 
@@ -78,7 +76,6 @@ public class FuzzyToolBox
     }
 
     private void applyRules() {
-        // TODO FARAH
         outputFuzzyVariables = FuzzyRule.getInference(fuzzyRules , inputFuzzyVariables , outputFuzzyVariables);
         // calculate fuzzified values in outputFuzzyVariable
     }
